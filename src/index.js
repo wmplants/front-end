@@ -6,7 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import { Security } from "@okta/okta-react";
-import {issuer, client_id, redirect_uri} from './app.config'
+import oktaConfig from "./app.config";
 
 const onAuthRequired = ({ history }) => history.push("/login");
 
@@ -14,10 +14,10 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Security
-        issuer={issuer}
-        client_id={client_id}
-        redirect_uri={redirect_uri}
-        onAuthRequired={onAuthRequired}
+        issuer={oktaConfig.issuer}
+        client_id={oktaConfig.client_id}
+        redirect_uri={oktaConfig.redirect_uri}
+        onAuthRequired={oktaConfig.onAuthRequired}
       >
         <App />
       </Security>
